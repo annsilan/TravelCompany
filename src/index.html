@@ -17,11 +17,7 @@
         />
     </head>
     <body>
-        <!-- карточки туров-->
-        <div>
-            <div class="relative flex gap-6 grid grid-cols-3 py-16 px-12 bg-slate-300 " id="moretour"></div>
-        </div>
-        <div class="bg-slate-300">
+        <div class="relative bg-slate-300">
             <div class="max-w-6xl mx-auto py-16 px-12 lg:px-0">
                 <div class="flex justify-center md:justify-end gap-6">
                     <!--избранное-->
@@ -50,6 +46,52 @@
                         Добавить маршрут
                     </button>
                 </div>
+                <!-- карточки туров-->
+                <div id="more" class="hidden flex flex-col">
+                    <div class="flex flex-wrap justify-end pt-16">
+                        <button
+                            id="btn-close"
+                            class="text-slate-500 hover:text-amber-600"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-8 h-8 hover:scale-125 transition-all duration-300 ease-linear"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                    <div
+                        class="flex flex-col gap-6 grid grid-cols-1 py-16 px-12"
+                        id="moretour"
+                    ></div>
+                    <div
+                        class="btn-up_hide flex flex-wrap justify-end pt-16 px-12 fixed bottom-10 left-0 right-10"
+                    >
+                        <button id="btn-up" class="btn-up text-amber-500">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                class="w-11 h-11 hover:scale-125 transition-all duration-300 ease-linear"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm.53 5.47a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72v5.69a.75.75 0 001.5 0v-5.69l1.72 1.72a.75.75 0 101.06-1.06l-3-3z"
+                                    clip-rule="evenodd"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
 
                 <div class="text-center mt-8">
                     <h1 class="text-5xl font-bold text-slate-700">Шри-Ланка</h1>
@@ -58,7 +100,10 @@
                     </p>
                 </div>
 
-                <div class="flex gap-6 grid grid-cols-1 md:grid-cols-3">
+                <div
+                    id="mycard"
+                    class="flex gap-6 grid grid-cols-1 md:grid-cols-3"
+                >
                     <!-- card 1-->
 
                     <div class="bg-slate-100 shadow-lg rounded-xl my-7">
@@ -227,11 +272,9 @@
                     <!-- Подробнее-->
 
                     <div
-                    id="more1"
+                        id="more1"
                         class="hidden flex flex-col fixed left-0 right-0 max-w-4xl mx-auto"
-                    >
-                    
-                    </div>
+                    ></div>
 
                     <!-- card 2-->
 
@@ -531,18 +574,10 @@
                             <span class="text-slate-400">200$</span>
                         </div>
                     </div>
-                    <!-- Подробнее-->
-                    <div
-                        class="hidden fixed left-0 right-0 max-w-4xl mx-auto"
-                        id="more3"
-                    ></div>
                 </div>
             </div>
         </div>
 
-        <script src="script.js"></script>
-        <!--<script src="adam.js"></script>
-        <script src="bridge.js"></script>
-        <script src="sigiria.js"></script>-->
+        <script src="script.js" type="module"></script>
     </body>
 </html>
