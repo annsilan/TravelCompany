@@ -170,7 +170,7 @@ async function init() {
         .addEventListener("click", () => filterRaiting(tours))
 }
 init()
-
+ 
 //кнопка добавления списка туров
 let tourInfo = document.getElementById("more")
 
