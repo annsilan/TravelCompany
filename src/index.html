@@ -9,6 +9,10 @@
 
         <link rel="stylesheet" type="text/css" href="styles.scss" />
         <link rel="stylesheet" type="text/css" href="mobilStyles.css" />
+        <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -39,16 +43,18 @@
                             />
                         </svg>
                     </button>
+                    <!-- Добавление маршрута -->
                     <button
                         id="addTour"
                         class="text-slate-600 font-medium border border-solid py-3 px-4 rounded-md bg-gradient-to-r from-slate-100 to-slate-200 hover:text-amber-600 transition-all duration-300 ease-linear"
                     >
-                        Добавить маршрут
+                        Все туры
                     </button>
                 </div>
                 <!-- карточки туров-->
                 <div id="more" class="hidden flex flex-col">
                     <div class="flex flex-wrap justify-end pt-16">
+                        <!-- кнопка закрыть -->
                         <button
                             id="btn-close"
                             class="text-slate-500 hover:text-amber-600"
@@ -69,6 +75,270 @@
                             </svg>
                         </button>
                     </div>
+
+                    <!-- Выпадающее меню -->
+                    <div class="flex flex-wrap absolute justify-start pt-16">
+                        <!-- Страна -->
+                        <div class="px-8">
+                            <button
+                                id="dropdownButton"
+                                type="button"
+                                data-toggle="dropdown"
+                                data-auto-close="outside"
+                                class="flex flex-wrap text-center text-slate-600 font-medium border border-solid py-3 px-4 rounded-md bg-gradient-to-r from-slate-100 to-slate-200 hover:text-amber-600 transition-all duration-300 ease-linear dropdown-toggle focus:rounded-b-none"
+                            >
+                                Страна
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-6 h-6 ml-8 transition-all duration-300 ease-linear focus:rotate-180 active:rotate-180"
+                                    id="arrow"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                                    />
+                                </svg>
+                            </button>
+                            <div id="dropdownMenu" class="dropdown">
+                                <ul
+                                    class="show flex flex-col bg-gradient-to-r from-slate-100 to-slate-200 transition-all duration-300 ease-linear shadow-lg rounded-b-sm"
+                                    aria-labelledby="dropdownButton"
+                                >
+                                    <button
+                                        id="Tailand"
+                                        class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
+                                    >
+                                        <a href="#">Тайланд</a>
+                                    </button>
+                                    <button
+                                        id="Egypt"
+                                        class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
+                                    >
+                                        <a href="#">Египет</a>
+                                    </button>
+                                    <button
+                                        id="Cyprus"
+                                        class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
+                                    >
+                                        <a href="#">Кипр</a>
+                                    </button>
+                                    <button
+                                        id="Maldives"
+                                        class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
+                                    >
+                                        <a href="#">Мальдивы</a>
+                                    </button>
+                                    <button
+                                        id="Indonesia"
+                                        class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
+                                    >
+                                        <a href="#">Индонезия</a>
+                                    </button>
+                                    <button
+                                        id="Mexico"
+                                        class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
+                                    >
+                                        <a href="#">Мексика</a>
+                                    </button>
+                                    <button
+                                        id="Tanzania"
+                                        class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
+                                    >
+                                        <a href="#">Танзания</a>
+                                    </button>
+                                    <button
+                                        id="all"
+                                        class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
+                                    >
+                                        <a href="#">Все туры</a>
+                                    </button>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Цена -->
+                        <div class="px-8">
+                            <button
+                                id="dropdownRadioButton"
+                                data-bs-toggle="radio"
+                                class="flex flex-wrap justify-between text-center text-slate-600 font-medium border border-solid py-3 px-8 rounded-md bg-gradient-to-r from-slate-100 to-slate-200 hover:text-amber-600 transition-all duration-300 ease-linear dropdown-toggle focus:rounded-b-none"
+                                type="button"
+                            >
+                                Цена
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-6 h-6 ml-8 transition-all duration-300 ease-linear focus:rotate-180 active:rotate-180"
+                                    id="price"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                                    />
+                                </svg>
+                            </button>
+
+                            <div id="dropdownRadio" class="dropdown">
+                                <ul
+                                    class="show bg-gradient-to-r from-slate-100 to-slate-200 transition-all duration-300 ease-linear shadow-lg rounded-b-sm"
+                                    aria-labelledby="dropdownRadioButton"
+                                >
+                                    <li class="dropdown-item block">
+                                        <div
+                                            class="flex items-center px-3 py-2"
+                                        >
+                                            <input
+                                                id="price-min"
+                                                type="radio"
+                                                name="price"
+                                                value="По убыванию"
+                                                class="w-4 h-4 text-slate-600"
+                                            />
+                                            <label
+                                                for="price-min"
+                                                class="ml-2 text-sm font-medium text-slate-600 dark:text-gray-300"
+                                                >По убыванию</label
+                                            >
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-item block">
+                                        <div
+                                            class="flex items-center px-3 py-2"
+                                        >
+                                            <input
+                                                id="price-max"
+                                                type="radio"
+                                                name="price"
+                                                value="По возрастанию"
+                                                class="w-4 h-4 text-slate-600"
+                                            />
+                                            <label
+                                                for="price-max"
+                                                class="ml-2 text-sm font-medium text-slate-600 dark:text-gray-300"
+                                                >По возрастанию</label
+                                            >
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Рейтинг -->
+                        <div class="px-8">
+                            <button
+                                id="dropdownRatingButton"
+                                data-bs-toggle="radio"
+                                class="flex flex-wrap justify-between text-center text-slate-600 font-medium border border-solid py-3 px-8 rounded-md bg-gradient-to-r from-slate-100 to-slate-200 hover:text-amber-600 transition-all duration-300 ease-linear dropdown-toggle focus:rounded-b-none"
+                                type="button"
+                            >
+                                Рейтинг
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke-width="1.5"
+                                    stroke="currentColor"
+                                    class="w-6 h-6 ml-8 transition-all duration-300 ease-linear focus:rotate-180 active:rotate-180"
+                                    id="arrowRating"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                                    />
+                                </svg>
+                            </button>
+
+                            <div id="dropdownRatingbox" class="dropdown">
+                                <ul
+                                    class="show bg-gradient-to-r from-slate-100 to-slate-200 transition-all duration-300 ease-linear shadow-lg rounded-b-sm"
+                                    aria-labelledby="dropdownRatingButton"
+                                >
+                                    <li class="dropdown-item block">
+                                        <div
+                                            class="flex items-center px-3 py-2"
+                                        >
+                                            <input
+                                                id="rating-1"
+                                                type="radio"
+                                                name="rating"
+                                                value="7 и выше"
+                                                class="w-4 h-4 text-slate-600"
+                                            />
+                                            <label
+                                                for="rating-1"
+                                                class="ml-2 text-sm font-medium text-slate-600 dark:text-gray-300"
+                                                >7 и выше</label
+                                            >
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-item block">
+                                        <div
+                                            class="flex items-center px-3 pb-2"
+                                        >
+                                            <input
+                                                id="rating-2"
+                                                type="radio"
+                                                name="rating"
+                                                value="8 и выше"
+                                                class="w-4 h-4 text-slate-600"
+                                            />
+                                            <label
+                                                for="rating-2"
+                                                class="dropdown-item block ml-2 text-sm font-medium text-slate-600 dark:text-gray-300"
+                                                >8 и выше</label
+                                            >
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-item block">
+                                        <div
+                                            class="flex items-center px-3 pb-2"
+                                        >
+                                            <input
+                                                id="rating-3"
+                                                type="radio"
+                                                name="rating"
+                                                value="9 и выше"
+                                                class="w-4 h-4 text-slate-600"
+                                            />
+                                            <label
+                                                for="rating-3"
+                                                class="dropdown-item block ml-2 text-sm font-medium text-slate-600 dark:text-gray-300"
+                                                >9 и выше</label
+                                            >
+                                        </div>
+                                    </li>
+                                    <li class="dropdown-item block">
+                                        <div
+                                            class="flex items-center px-3 pb-2"
+                                        >
+                                            <input
+                                                id="rating-all"
+                                                type="radio"
+                                                name="rating"
+                                                value=""
+                                                class="w-4 h-4 text-slate-600"
+                                            />
+                                            <label
+                                                for="rating-all"
+                                                class="dropdown-item block ml-2 text-sm font-medium text-slate-600 dark:text-gray-300"
+                                                >Все туры</label
+                                            >
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Кнопка стрелки вверх-->
                     <div
                         class="flex flex-col gap-6 grid grid-cols-1 py-16 px-12"
                         id="moretour"
@@ -92,7 +362,7 @@
                         </button>
                     </div>
                 </div>
-
+                <!-- Заголовок -->
                 <div class="text-center mt-8">
                     <h1 class="text-5xl font-bold text-slate-700">Шри-Ланка</h1>
                     <p class="text-xl font-medium text-slate-600 my-5">
