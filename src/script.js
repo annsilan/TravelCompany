@@ -78,96 +78,10 @@ function renderTours(tours) {
 
 
 
-// фильтр по стране
-function filterCountry(tours, country) {
-    if (country) {
-        const filterTours = tours.filter((tour) => {
-            return tour.country === country
-        })
-        renderTours(filterTours)
-    } else {
-        renderTours(tours)
-    }
-}
-
-// сортировка по цене
-
-function sortPriceMin(tours) {
-    tours.sort(function (a, b) {
-        return parseFloat(b.price) - parseFloat(a.price)
-    })
-    renderTours(tours)
-}
-function sortPricemMax(tours) {
-    tours.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
-
-    renderTours(tours)
-}
-
-// // фильтр по рейтингу
-// function filterRaiting (tours,rating){
-
-//     if (rating>=8){
-
-//        const filterTours = tours.filter((tour)=>{
-//             return tour.rating===rating
-//         })
-//         renderTours(filterTours)
-//     } else {
-//         renderTours(tours)
-//     }
-// }
-
 async function init() {
     const tours = await loadTour()
     renderTours(tours)
-    //  страны
-    document
-        .getElementById("Tailand")
-        .addEventListener("click", () => filterCountry(tours, "Тайланд"))
-    document
-        .getElementById("Egypt")
-        .addEventListener("click", () => filterCountry(tours, "Египет"))
-    document
-        .getElementById("Cyprus")
-        .addEventListener("click", () => filterCountry(tours, "Кипр"))
-    document
-        .getElementById("Maldives")
-        .addEventListener("click", () => filterCountry(tours, "Мальдивы"))
-    document
-        .getElementById("Indonesia")
-        .addEventListener("click", () => filterCountry(tours, "Индонезия"))
-    document
-        .getElementById("Mexico")
-        .addEventListener("click", () => filterCountry(tours, "Мексика"))
-    document
-        .getElementById("Tanzania")
-        .addEventListener("click", () => filterCountry(tours, "Танзания"))
-    document
-        .getElementById("all")
-        .addEventListener("click", () => filterCountry(tours))
-
-    // цена
-    document
-        .getElementById("price-min")
-        .addEventListener("click", () => sortPriceMin(tours, "По убыванию"))
-    document
-        .getElementById("price-max")
-        .addEventListener("click", () => sortPricemMax(tours, "По возрастанию"))
-
-    // рейтинг
-    document
-        .getElementById("rating-1")
-        .addEventListener("click", () => filterRaiting(tours, "7 и выше"))
-    document
-        .getElementById("rating-2")
-        .addEventListener("click", () => filterRaiting(tours, "8 и выше"))
-    document
-        .getElementById("rating-3")
-        .addEventListener("click", () => filterRaiting(tours, "9 и выше"))
-    document
-        .getElementById("rating-all")
-        .addEventListener("click", () => filterRaiting(tours))
+   
 }
 init()
  
