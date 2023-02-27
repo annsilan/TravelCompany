@@ -65,7 +65,9 @@ function renderTours(tours) {
                         </svg>
                     
 
-                    </button></div>
+                    </button>
+                    <button class="text-slate-600 font-medium border border-solid py-3 px-4 rounded-md bg-gradient-to-r from-slate-100 to-slate-200 hover:text-amber-600 transition-all duration-300 ease-linear">Забронировать</button>
+                    </div>
                     
                 </div>
                
