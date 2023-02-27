@@ -46,7 +46,7 @@ function renderTours(tours) {
                    <p >${startDate} - ${endDate}</p>
                 </div>
                 <div class="flex flex-wrap justify-end mr-2">
-                <button onclick="like()" id="noneLike"
+                <button
                         class="w-14 ml-5 font-medium text-slate-600 py-3 px-4  hover:text-amber-600 hover:scale-150 transition-all duration-300 ease-linear"
                     >
                         <svg id="noLike"
@@ -64,9 +64,8 @@ function renderTours(tours) {
                             />
                         </svg>
                     
-
                     </button>
-                    <button class="text-slate-600 font-medium border border-solid py-3 px-4 rounded-md bg-gradient-to-r from-slate-100 to-slate-200 hover:text-amber-600 transition-all duration-300 ease-linear">Забронировать</button>
+                    <button  id="orderModal" data-toggle="modal" class="text-slate-600 font-medium border border-solid py-3 px-4 rounded-md bg-gradient-to-r from-slate-100 to-slate-200 hover:text-amber-600 transition-all duration-300 ease-linear">Забронировать</button>
                     </div>
                     
                 </div>
@@ -104,6 +103,7 @@ function sortPricemMax(tours) {
     renderTours(tours)
 }
 
+
 // // фильтр по рейтингу
 // function filterRaiting (tours,rating){
 
@@ -117,6 +117,14 @@ function sortPricemMax(tours) {
 //         renderTours(tours)
 //     }
 // }
+
+// заказ тура
+// const btnOrder = document.getElementById("orderModal")
+// btnOrder.addEventListener("click", order)
+
+// function order(){
+// }
+
 
 async function init() {
     const tours = await loadTour()
@@ -168,6 +176,8 @@ async function init() {
     document
         .getElementById("rating-all")
         .addEventListener("click", () => filterRaiting(tours))
+
+
 }
 init()
  
