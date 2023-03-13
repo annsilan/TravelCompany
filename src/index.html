@@ -77,7 +77,9 @@
                     </div>
 
                     <!-- Выпадающее меню -->
-                    <div class="flex flex-wrap absolute justify-start pt-16 ml-24">
+                    <div
+                        class="flex flex-wrap absolute justify-start pt-16 ml-24"
+                    >
                         <!-- Страна -->
                         <div class="px-8">
                             <button
@@ -111,48 +113,56 @@
                                 >
                                     <button
                                         id="Tailand"
+                                        data-country="Тайланд"
                                         class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
                                     >
                                         <a href="#">Тайланд</a>
                                     </button>
                                     <button
                                         id="Egypt"
+                                        data-country="Египет"
                                         class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
                                     >
                                         <a href="#">Египет</a>
                                     </button>
                                     <button
                                         id="Cyprus"
+                                        data-country="Кипр"
                                         class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
                                     >
                                         <a href="#">Кипр</a>
                                     </button>
                                     <button
                                         id="Maldives"
+                                        data-country="Мальдивы"
                                         class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
                                     >
                                         <a href="#">Мальдивы</a>
                                     </button>
                                     <button
                                         id="Indonesia"
+                                        data-country="Индонезия"
                                         class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
                                     >
                                         <a href="#">Индонезия</a>
                                     </button>
                                     <button
                                         id="Mexico"
+                                        data-country="Мексика"
                                         class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
                                     >
                                         <a href="#">Мексика</a>
                                     </button>
                                     <button
                                         id="Tanzania"
+                                        data-country="Танзания"
                                         class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
                                     >
                                         <a href="#">Танзания</a>
                                     </button>
                                     <button
                                         id="all"
+                                        data-country="Все туры"
                                         class="dropdown-item text-start px-3 py-2 hover:bg-slate-400 hover:text-slate-100"
                                     >
                                         <a href="#">Все туры</a>
@@ -261,61 +271,61 @@
                                     class="show bg-gradient-to-r from-slate-100 to-slate-200 transition-all duration-300 ease-linear shadow-lg rounded-b-sm"
                                     aria-labelledby="dropdownRatingButton"
                                 >
-                                    <li class="dropdown-item block">
+                                    <li class=" block">
                                         <div
                                             class="flex items-center px-3 py-2"
                                         >
                                             <input
-                                                id="rating-1"
+                                                id="rating-7"
                                                 type="radio"
                                                 name="rating"
-                                                value="7 и выше"
-                                                class="w-4 h-4 text-slate-600"
+                                                value="7"
+                                                class="ratingClass w-4 h-4 text-slate-600"
                                             />
                                             <label
-                                                for="rating-1"
-                                                class="ml-2 text-sm font-medium text-slate-600 dark:text-gray-300"
+                                                for="rating-7"
+                                                class="ml-2 text-sm font-medium text-slate-600"
                                                 >7 и выше</label
                                             >
                                         </div>
                                     </li>
-                                    <li class="dropdown-item block">
+                                    <li class=" block">
                                         <div
                                             class="flex items-center px-3 pb-2"
                                         >
                                             <input
-                                                id="rating-2"
+                                                id="rating-8"
                                                 type="radio"
                                                 name="rating"
-                                                value="8 и выше"
-                                                class="w-4 h-4 text-slate-600"
+                                                value="8"
+                                                class="ratingClass w-4 h-4 text-slate-600"
                                             />
                                             <label
-                                                for="rating-2"
-                                                class="dropdown-item block ml-2 text-sm font-medium text-slate-600 dark:text-gray-300"
+                                                for="rating-8"
+                                                class="dropdown-item block ml-2 text-sm font-medium text-slate-600"
                                                 >8 и выше</label
                                             >
                                         </div>
                                     </li>
-                                    <li class="dropdown-item block">
+                                    <li class=" block">
                                         <div
                                             class="flex items-center px-3 pb-2"
                                         >
                                             <input
-                                                id="rating-3"
+                                                id="rating-9"
                                                 type="radio"
                                                 name="rating"
-                                                value="9 и выше"
-                                                class="w-4 h-4 text-slate-600"
+                                                value="9"
+                                                class="ratingClass w-4 h-4 text-slate-600"
                                             />
                                             <label
-                                                for="rating-3"
-                                                class="dropdown-item block ml-2 text-sm font-medium text-slate-600 dark:text-gray-300"
+                                                for="rating-9"
+                                                class="dropdown-item block ml-2 text-sm font-medium text-slate-600"
                                                 >9 и выше</label
                                             >
                                         </div>
                                     </li>
-                                    <li class="dropdown-item block">
+                                    <li class=" block">
                                         <div
                                             class="flex items-center px-3 pb-2"
                                         >
@@ -323,12 +333,12 @@
                                                 id="rating-all"
                                                 type="radio"
                                                 name="rating"
-                                                value=""
-                                                class="w-4 h-4 text-slate-600"
+                                                value="0"
+                                                class="ratingClass w-4 h-4 text-slate-600"
                                             />
                                             <label
                                                 for="rating-all"
-                                                class="dropdown-item block ml-2 text-sm font-medium text-slate-600 dark:text-gray-300"
+                                                class="dropdown-item block ml-2 text-sm font-medium text-slate-600"
                                                 >Все туры</label
                                             >
                                         </div>
