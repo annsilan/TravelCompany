@@ -46,10 +46,10 @@ function renderTours(tours) {
                    <p >${startDate} - ${endDate}</p>
                 </div>
                 <div class="flex flex-wrap justify-end mr-2">
-                <button onclick="like()" id="noneLike"
-                        class="w-14 ml-5 font-medium text-slate-600 py-3 px-4  hover:text-amber-600 hover:scale-150 transition-all duration-300 ease-linear"
+                <button onclick="nonlike()" id="btnFavourites"
+                        class=" w-14 ml-5 font-medium text-slate-600 py-3 px-4  hover:text-amber-600 hover:scale-150 transition-all duration-300 ease-linear"
                     >
-                        <svg id="noLike"
+                        <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
@@ -66,6 +66,16 @@ function renderTours(tours) {
                     
 
                     </button>
+                    <button onclick="like()" id="btnLike"
+                        class="hidden w-14 ml-5 font-medium text-slate-600 py-3 px-4  hover:text-amber-600 hover:scale-150 transition-all duration-300 ease-linear"
+                    >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                  </svg>
+                  
+                    
+
+                    </button>
                     <button class="text-slate-600 font-medium border border-solid py-3 px-4 rounded-md bg-gradient-to-r from-slate-100 to-slate-200 hover:text-amber-600 transition-all duration-300 ease-linear">Забронировать</button>
                     </div>
                     
@@ -74,40 +84,6 @@ function renderTours(tours) {
             </div>
             `
     })
-}
-
-// фильтр по стране
-function filterCountry(tours, country) {
-    if (country) {
-        const filterTours = tours.filter((tour) => {
-            return tour.country === country
-        })
-        renderTours(filterTours)
-    } else {
-        renderTours(tours)
-    }
-}
-
-// сортировка по цене
-
-function sortPriceMin(tours) {
-    tours.sort(function (a, b) {
-        return parseFloat(b.price) - parseFloat(a.price)
-    })
-    renderTours(tours)
-}
-function sortPricemMax(tours) {
-    tours.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
-
-    renderTours(tours)
-}
-
-// // фильтр по рейтингу
-function filterRating(tours, rating) {
-    const filterTours = tours.filter((tour) => {
-        return tour.rating >= rating
-    })
-    renderTours(filterTours)
 }
 
 async function init() {
@@ -124,6 +100,7 @@ async function init() {
         )
     })
 
+
     // цена
     document
         .getElementById("price-min")
@@ -131,6 +108,8 @@ async function init() {
     document
         .getElementById("price-max")
         .addEventListener("click", () => sortPricemMax(tours, "По возрастанию"))
+
+
 
     // рейтинг
     // делаем массив
@@ -200,6 +179,18 @@ document.documentElement.addEventListener("click", function () {
     }
 })
 
+// фильтр по стране
+function filterCountry(tours, country) {
+    if (country) {
+        const filterTours = tours.filter((tour) => {
+            return tour.country === country
+        })
+        renderTours(filterTours)
+    } else {
+        renderTours(tours)
+    }
+}
+
 // Меню  цена
 const dropdownСheckboxBtn = document.getElementById("dropdownRadioButton")
 const dropdownСheckboxMenu = document.getElementById("dropdownRadio")
@@ -220,6 +211,21 @@ document.documentElement.addEventListener("click", function () {
     }
 })
 
+
+// сортировка по цене
+
+function sortPriceMin(tours) {
+    tours.sort(function (a, b) {
+        return parseFloat(b.price) - parseFloat(a.price)
+    })
+    renderTours(tours)
+}
+function sortPricemMax(tours) {
+    tours.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+
+    renderTours(tours)
+}
+
 // Меню  рейтинг
 const dropdownRatingBtn = document.getElementById("dropdownRatingButton")
 const dropdownRatingMenu = document.getElementById("dropdownRatingbox")
@@ -239,3 +245,14 @@ document.documentElement.addEventListener("click", function () {
     if (dropdownRatingMenu.classList.contains("show")) {
     }
 })
+
+// фильтр по рейтингу
+function filterRating(tours, rating) {
+    const filterTours = tours.filter((tour) => {
+        return tour.rating >= rating
+    })
+    renderTours(filterTours)
+}
+
+// смена иконки избранное
+
