@@ -10,6 +10,7 @@ async function loadTour() {
 }
 
 function renderTours(tours) {
+   
     document.getElementById("moretour").innerHTML = ""
     tours.forEach((tour) => {
         let check
@@ -76,7 +77,7 @@ function renderTours(tours) {
                     
 
                     </button>
-                    <button class="text-slate-600 font-medium border border-solid py-3 px-4 rounded-md bg-gradient-to-r from-slate-100 to-slate-200 hover:text-amber-600 transition-all duration-300 ease-linear">Забронировать</button>
+                    <button id="bookTour(${tour.id})" class="text-slate-600 font-medium border border-solid py-3 px-4 rounded-md bg-gradient-to-r from-slate-100 to-slate-200 hover:text-amber-600 transition-all duration-300 ease-linear">Забронировать</button>
                     </div>
                     
                 </div>
@@ -84,7 +85,122 @@ function renderTours(tours) {
             </div>
             `
     })
+
+    // tours.forEach((tour) => {
+    //     document
+    //         .getElementById("bookTour(${tour.i})")
+    //         .addEventListener("click", () => bookingTour(tour,id))
+    // })
+  
+    tours.forEach((tour) => {
+        const tourB = document.getElementById("bookTour(${tour.id})")
+        tourB = document.addEventListener("click", () => bookingTour(tour))
+        order.style.display = "flex"
+    })
 }
+
+// Бронирование тура
+function bookingTour(tour) {
+    
+    let check
+    if (tour.city && tour.city.length > 0) {
+        check = tour.city + "," + tour.country
+    } else {
+        check = tour.country
+    }
+
+    const startDate = format(new Date(tour.startTime), "dd MMMM yyyy", {
+        locale: ru
+    })
+
+    const endDate = format(new Date(tour.endTime), "dd MMMM yyyy", {
+        locale: ru
+    })
+
+    document.getElementById("booking").innerHTML = `
+    <div class="flex box-content justify-end p-2">
+    <button
+                            id="btn-closeModal"
+                            class="text-slate-500 hover:text-amber-600"
+                        >
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-8 h-8 hover:scale-125 transition-all duration-300 ease-linear"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                />
+                            </svg>
+                        </button>
+    </div>
+       <div class="max-w-4xl mx-auto ">
+         <div class="max-w-xl mx-auto grid grid-cols-2 > 
+         <div class="shadow-lg  rounded-md bg-slate-100 flex flex-wrap grid grid-cols-2"> 
+            <img class="rounded-md" src="${tour.image}"  />
+            <div class="flex flex-col justify-between  mb-5">
+                <div>
+                  <p class="text-slate-700 text-base font-bold ml-5 ">${tour.hotelName}</p>
+                  <div class="flex flex-wrap text-slate-500 text-s ml-5 ">
+                  <p>${check}</p>
+                  </div>
+
+                </div>
+            <div class="flex flex-wrap justify-between text-slate-500 mr-1 mt-6 ">
+            <p class="text-slate-700 text-base font-bold ml-5"> ${tour.price} руб</p>
+                <p class="rounded-md bg-orange-500 p-1 text-slate-100"> ${tour.rating}</p>
+                <div class="text-slate-600 ml-3 mt-7">
+               <p >${startDate} - ${endDate}</p>
+            </div>
+            </div>
+         </div>
+           
+         
+           
+        </div>
+        <div class="w-full flex flex-col px-10 py-6">
+                        <form class="flex flex-col">
+                            <label for="name">
+                                Имя и фамилия<span class="text-red-500">*</span>
+                            </label>
+                            <input id="name" type="text" name="Name" class="rounded-md border"/>
+                        </form> 
+                        <form class="flex flex-col pt-2">
+                            <label for="phone">
+                                Телефон для связи<span class="text-red-500">*</span>
+                            </label>
+                            <input id="phone" type="text" name="phone" class="rounded-md border"/>
+                        </form> 
+                        <form class="flex flex-col pt-2">
+                            <label for="email">
+                                Электронная почта<span class="text-red-500">*</span>
+                            </label>
+                            <input id="email" type="text" name="email" class="rounded-md border"/>
+                        </form> 
+                        <form class="flex flex-col pt-2">
+                            <label for="comment">
+                                Комментарий
+                            </label>
+                            <textarea name="comment" class="h-16 rounded-md border"></textarea>
+                        </form> 
+
+                    </div>
+                    <div class="flex justify-center">
+                        <form>
+                            <button class="ml-5 my-7 font-medium text-slate-600 border border-solid py-3 px-4 rounded-md bg-slate-100 hover:text-amber-600 " type="submit">Отправить запрос</button>
+                        </form>
+
+                    </div>
+
+       
+        `
+}
+
 
 async function init() {
     const tours = await loadTour()
@@ -100,6 +216,13 @@ async function init() {
         )
     })
 
+    // чистая форма
+    function clearform() {
+        document.getElementById("name").value = ""
+        document.getElementById("phone").value = ""
+        document.getElementById("email").value = ""
+    }
+      
 
     // цена
     document
@@ -108,8 +231,6 @@ async function init() {
     document
         .getElementById("price-max")
         .addEventListener("click", () => sortPricemMax(tours, "По возрастанию"))
-
-
 
     // рейтинг
     // делаем массив
@@ -123,10 +244,12 @@ async function init() {
 }
 init()
 
+
+
 //кнопка добавления списка туров
 let tourInfo = document.getElementById("more")
 
-const btnmore = document.getElementById("addTour")
+const btnmore = document.getElementById("add")
 btnmore.addEventListener("click", add)
 
 function add() {
@@ -211,7 +334,6 @@ document.documentElement.addEventListener("click", function () {
     }
 })
 
-
 // сортировка по цене
 
 function sortPriceMin(tours) {
@@ -254,5 +376,13 @@ function filterRating(tours, rating) {
     renderTours(filterTours)
 }
 
-// смена иконки избранное
+//закрытие бронирования
+let bookingModal = document.getElementById("booking")
 
+const btnCloseModal = document.getElementById("btn-closeModal")
+btnCloseModal.addEventListener("click", closeModal)
+
+function closeModal() {
+    bookingModal.style.display = "none"
+    console.log("closeModal")
+}

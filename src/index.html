@@ -20,8 +20,18 @@
             rel="stylesheet"
         />
     </head>
-    <body>
+    <body class="relative">
         <div class="relative bg-slate-300">
+           
+
+            <!-- Бронирование -->
+            <div id="modal">
+                <div
+                    id="booking"
+                    class="max-w-4xl mx-auto bg-slate-200 shadow-lg"
+                ></div>
+            </div>
+
             <div class="max-w-6xl mx-auto py-16 px-12 lg:px-0">
                 <div class="flex justify-center md:justify-end gap-6">
                     <!--избранное-->
@@ -44,12 +54,11 @@
                         </svg>
                     </button>
                     <!-- Модальное окно избранного -->
-                    <div id="modalFavorite" class="">
+                    <div id="modalFavorite" class=""></div>
 
-                    </div>
                     <!-- Добавление маршрута -->
                     <button
-                        id="addTour"
+                        id="add"
                         class="text-slate-600 font-medium border border-solid py-3 px-4 rounded-md bg-gradient-to-r from-slate-100 to-slate-200 hover:text-amber-600 transition-all duration-300 ease-linear"
                     >
                         Все туры
@@ -275,7 +284,7 @@
                                     class="show bg-gradient-to-r from-slate-100 to-slate-200 transition-all duration-300 ease-linear shadow-lg rounded-b-sm"
                                     aria-labelledby="dropdownRatingButton"
                                 >
-                                    <li class=" block">
+                                    <li class="block">
                                         <div
                                             class="flex items-center px-3 py-2"
                                         >
@@ -293,7 +302,7 @@
                                             >
                                         </div>
                                     </li>
-                                    <li class=" block">
+                                    <li class="block">
                                         <div
                                             class="flex items-center px-3 pb-2"
                                         >
@@ -311,7 +320,7 @@
                                             >
                                         </div>
                                     </li>
-                                    <li class=" block">
+                                    <li class="block">
                                         <div
                                             class="flex items-center px-3 pb-2"
                                         >
@@ -329,7 +338,7 @@
                                             >
                                         </div>
                                     </li>
-                                    <li class=" block">
+                                    <li class="block">
                                         <div
                                             class="flex items-center px-3 pb-2"
                                         >
