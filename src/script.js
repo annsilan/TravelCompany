@@ -257,7 +257,7 @@ btnmore.addEventListener("click", add)
 
 function add() {
     tourInfo.style.display = "flex"
-    renderTours(tour)
+    // renderTours(tour)
 }
 
 //кнопка вверх
