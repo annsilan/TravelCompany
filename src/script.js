@@ -86,22 +86,24 @@ function renderTours(tours) {
             `
     })
 
-    // tours.forEach((tour) => {
-    //     document
-    //         .getElementById("bookTour(${tour.i})")
-    //         .addEventListener("click", () => bookingTour(tour,id))
-    // })
-  
     tours.forEach((tour) => {
-        const tourB = document.getElementById("bookTour(${tour.id})")
-        tourB = document.addEventListener("click", () => bookingTour(tour))
-        order.style.display = "flex"
+        document
+            .getElementById(`bookTour(${tour.id})`)
+            .addEventListener("click", () => bookingTour(tour))
+            
     })
+  
+    // tours.forEach((tour) => {
+    //     const tourB = document.getElementById(`bookTour(${tour.id})`)
+    //     tourB = document.addEventListener("click", () => bookingTour(tour))
+    //      document.getElementById(`booking`).style.display = "flex"
+       
+    // })
 }
 
 // Бронирование тура
 function bookingTour(tour) {
-    
+    document.getElementById(`booking`).style.display = "flex"
     let check
     if (tour.city && tour.city.length > 0) {
         check = tour.city + "," + tour.country
@@ -199,7 +201,16 @@ function bookingTour(tour) {
 
        
         `
+
+        const btnCloseModal = document.getElementById("btn-closeModal")
+        btnCloseModal.addEventListener("click", closeModal)
 }
+    // // чистая форма
+    // function clearform() {
+    //     document.getElementById("name").value = ""
+    //     document.getElementById("phone").value = ""
+    //     document.getElementById("email").value = ""
+    // }
 
 
 async function init() {
@@ -215,14 +226,6 @@ async function init() {
             filterCountry(tours, countryBtn.dataset.country)
         )
     })
-
-    // чистая форма
-    function clearform() {
-        document.getElementById("name").value = ""
-        document.getElementById("phone").value = ""
-        document.getElementById("email").value = ""
-    }
-      
 
     // цена
     document
@@ -254,7 +257,7 @@ btnmore.addEventListener("click", add)
 
 function add() {
     tourInfo.style.display = "flex"
-    renderTours(tours)
+    renderTours(tour)
 }
 
 //кнопка вверх
@@ -377,12 +380,9 @@ function filterRating(tours, rating) {
 }
 
 //закрытие бронирования
-let bookingModal = document.getElementById("booking")
-
-const btnCloseModal = document.getElementById("btn-closeModal")
-btnCloseModal.addEventListener("click", closeModal)
 
 function closeModal() {
+    let bookingModal = document.getElementById("booking")
     bookingModal.style.display = "none"
     console.log("closeModal")
 }
