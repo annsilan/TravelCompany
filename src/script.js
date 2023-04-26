@@ -10,7 +10,6 @@ async function loadTour() {
 }
 
 function renderTours(tours) {
-   
     document.getElementById("moretour").innerHTML = ""
     tours.forEach((tour) => {
         let check
@@ -90,20 +89,13 @@ function renderTours(tours) {
         document
             .getElementById(`bookTour(${tour.id})`)
             .addEventListener("click", () => bookingTour(tour))
-            
     })
-  
-    // tours.forEach((tour) => {
-    //     const tourB = document.getElementById(`bookTour(${tour.id})`)
-    //     tourB = document.addEventListener("click", () => bookingTour(tour))
-    //      document.getElementById(`booking`).style.display = "flex"
-       
-    // })
 }
 
 // Бронирование тура
 function bookingTour(tour) {
     document.getElementById(`booking`).style.display = "flex"
+
     let check
     if (tour.city && tour.city.length > 0) {
         check = tour.city + "," + tour.country
@@ -120,98 +112,104 @@ function bookingTour(tour) {
     })
 
     document.getElementById("booking").innerHTML = `
-    <div class="flex box-content justify-end p-2">
-    <button
-                            id="btn-closeModal"
-                            class="text-slate-500 hover:text-amber-600"
-                        >
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke-width="1.5"
-                                stroke="currentColor"
-                                class="w-8 h-8 hover:scale-125 transition-all duration-300 ease-linear"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                                />
-                            </svg>
-                        </button>
-    </div>
-       <div class="max-w-4xl mx-auto ">
-         <div class="max-w-xl mx-auto grid grid-cols-2 > 
-         <div class="shadow-lg  rounded-md bg-slate-100 flex flex-wrap grid grid-cols-2"> 
-            <img class="rounded-md" src="${tour.image}"  />
-            <div class="flex flex-col justify-between  mb-5">
-                <div>
-                  <p class="text-slate-700 text-base font-bold ml-5 ">${tour.hotelName}</p>
-                  <div class="flex flex-wrap text-slate-500 text-s ml-5 ">
-                  <p>${check}</p>
-                  </div>
-
-                </div>
-            <div class="flex flex-wrap justify-between text-slate-500 mr-1 mt-6 ">
-            <p class="text-slate-700 text-base font-bold ml-5"> ${tour.price} руб</p>
-                <p class="rounded-md bg-orange-500 p-1 text-slate-100"> ${tour.rating}</p>
-                <div class="text-slate-600 ml-3 mt-7">
-               <p >${startDate} - ${endDate}</p>
-            </div>
-            </div>
-         </div>
-           
-         
-           
+      
+        <div class=" mx-auto bg-slate-200 my-20 box-content p-5  rounded-md">
+            <div class="flex  justify-end p-1">
+                <button
+                    id="btn-closeModal"
+                    class="text-slate-500 hover:text-amber-600"
+                >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-8 h-8 hover:scale-125 transition-all duration-300 ease-linear"
+                    >
+                      <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                 </button>
         </div>
-        <div class="w-full flex flex-col px-10 py-6">
-                        <form class="flex flex-col">
-                            <label for="name">
-                                Имя и фамилия<span class="text-red-500">*</span>
-                            </label>
-                            <input id="name" type="text" name="Name" class="rounded-md border"/>
-                        </form> 
-                        <form class="flex flex-col pt-2">
-                            <label for="phone">
-                                Телефон для связи<span class="text-red-500">*</span>
-                            </label>
-                            <input id="phone" type="text" name="phone" class="rounded-md border"/>
-                        </form> 
-                        <form class="flex flex-col pt-2">
-                            <label for="email">
-                                Электронная почта<span class="text-red-500">*</span>
-                            </label>
-                            <input id="email" type="text" name="email" class="rounded-md border"/>
-                        </form> 
-                        <form class="flex flex-col pt-2">
-                            <label for="comment">
-                                Комментарий
-                            </label>
-                            <textarea name="comment" class="h-16 rounded-md border"></textarea>
-                        </form> 
-
+        <div class="max-w-lg mx-auto grid grid-cols-2 > 
+            <div class="shadow-lg  rounded-md bg-slate-100 flex flex-wrap grid grid-cols-2"> 
+                <img class="rounded-md" src="${tour.image}"  />
+                <div class="flex flex-col justify-between  mb-5">
+                    <div>
+                       <p class="text-slate-700 text-s font-bold ml-3 ">${tour.hotelName}</p>
+                        <div class="flex flex-wrap text-slate-500 text-s ml-3 ">
+                          <p>${check}</p>
+                        </div>
                     </div>
-                    <div class="flex justify-center">
-                        <form>
-                            <button class="ml-5 my-7 font-medium text-slate-600 border border-solid py-3 px-4 rounded-md bg-slate-100 hover:text-amber-600 " type="submit">Отправить запрос</button>
-                        </form>
-
+                    <div class="flex flex-wrap justify-between text-slate-500 mr-1 mt-6 ">
+                       <p class="text-slate-700 text-s font-bold ml-3"> ${tour.price} руб</p>
+                       <div class="text-slate-600 ml-3 mt-5">
+                          <p class="text-s ">${startDate} - ${endDate}</p>
+                        </div>
                     </div>
+                </div>
+            </div>
+            <div class=" flex flex-col px-2  ">
+                <form class="flex flex-col text-s">
+                    <label for="name" class="text-xs">
+                        Имя и фамилия<span class="text-red-500">*</span>
+                    </label>
+                    <input id="name" type="text" name="name" class="rounded-md border" />
+                    <label for="phone" class="text-xs pt-2" >
+                        Телефон для связи<span class="text-red-500">*</span>
+                    </label>
+                    <input id="phone" type="text" name="phone" class="rounded-md border"/>
+                    <label for="email" class="text-xs pt-2">
+                        Электронная почта<span class="text-red-500">*</span>
+                    </label>
+                    <input id="email" type="text" name="email" class="rounded-md border"/>
+                    <label for="comment" class="text-xs pt-2">
+                        Комментарий
+                    </label>
+                    <textarea name="comment" class="h-16 rounded-md border"></textarea>
+                    <div class="flex justify-center mb-10 ">
+                        <button id="btn-send" class=" ml-15 my-7 font-medium text-slate-600 border border-solid py-3 px-4 rounded-md bg-slate-100 hover:text-amber-600 "  >Отправить запрос</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div id="errorWindow" class="hidden mx-auto bg-slate-200 my-60 box-content  rounded-md">
+           <p class="text-center p-10  text-orange-700 font-medium text-lg" >Для бронирования тура необходимо заполнить все обязательные поля.</p>
+           <div class="flex justify-center">
+           <button id="btn-backBokingWindow" class="flex justify-center ml-15 my-7 font-medium text-slate-600 border border-solid py-3 px-4 rounded-md bg-slate-100 hover:text-amber-600 "  >Назад</button>
+           </div>
+        </div>
+        <div id="windowOk" class="hidden mx-auto bg-slate-200 my-60 box-content  rounded-md">
+            <p class="text-center p-10  text-orange-700 font-medium text-lg" >Ваша заявка успешно отправлена.</p>
+            <div class="flex justify-center">
+            <button id="btn-windowOkClose" class="flex justify-center ml-15 my-7 font-medium text-slate-600 border border-solid py-3 px-4 rounded-md bg-slate-100 hover:text-amber-600 ">Закрыть</button>
+        </div>
+     </div>
+    `
+    // Кнопка закрытия бронирования
+    const btnCloseModal = document.getElementById("btn-closeModal")
+    btnCloseModal.addEventListener("click", closeModal)
 
-       
-        `
+    // Кнопка назад
+    const btnBack = document.getElementById("btn-backBokingWindow")
+    btnBack.addEventListener("click", backModal)
 
-        const btnCloseModal = document.getElementById("btn-closeModal")
-        btnCloseModal.addEventListener("click", closeModal)
+    // Кнопка успешного бронирования
+    const btnOk = document.getElementById("btn-windowOkClose")
+    btnOk.addEventListener("click", windowOkClose)
+
+    // let btnsend = document.getElementById(`btn-send`)
+    // btnsend.addEventListener("click", sendBooking)
+
+    document.getElementById("btn-send").addEventListener("click", () => sendBooking)
+    console.log(btnsend)
+     
+   
 }
-    // // чистая форма
-    // function clearform() {
-    //     document.getElementById("name").value = ""
-    //     document.getElementById("phone").value = ""
-    //     document.getElementById("email").value = ""
-    // }
-
 
 async function init() {
     const tours = await loadTour()
@@ -247,7 +245,21 @@ async function init() {
 }
 init()
 
+// Функция закрытия модального окна
+function closeModal() {
+    document.getElementById(`booking`).style.display = "none"
+}
 
+// Функция назад
+function backModal() {
+    document.getElementById(`errorWindow`).style.display = "none"
+    document.getElementById(`booking`).style.display = "flex"
+}
+
+// Функция закрытия успешного бронирования
+function windowOkClose() {
+    document.getElementById(`windowOk`).style.display = "none"
+}
 
 //кнопка добавления списка туров
 let tourInfo = document.getElementById("more")
@@ -379,10 +391,52 @@ function filterRating(tours, rating) {
     renderTours(filterTours)
 }
 
-//закрытие бронирования
-
-function closeModal() {
+function openWindowOk() {
+    let windowOk = document.getElementById("windowOk")
     let bookingModal = document.getElementById("booking")
     bookingModal.style.display = "none"
-    console.log("closeModal")
+    windowOk.style.display = "flex"
 }
+function errorW() {
+    let errorWind =  document.getElementById("errorWindow")
+    let bookingModal = document.getElementById("booking")
+    bookingModal.style.display = "none"
+    errorWind.style.display = "flex"
+}
+async function sendBooking() {
+  let name = document.getElementById("name").value
+  let phone = document.getElementById("phone").value
+  let email = document.getElementById("email").value
+  let comment = document.getElementById("comment").value
+    if (name && phone && email) {
+        
+        document.getElementById("error").style.display = "none"
+     
+        const params = {
+            name: name,
+            phone: phone,
+            email: email,
+            comment: comment
+        }
+        let url = `https://www.bit-by-bit.ru/api/student-projects/tours/${id}`
+        let response = await fetch(url, {
+            method: "POST",
+            body: JSON.stringify(params)
+        })
+        let data = await response.json()
+        console.log(data)
+
+        openWindowOk()
+        document
+            .getElementById(`btn-windowOkClose`)
+            .addEventListener("click", windowOkClose)
+    } else {
+        errorW() 
+        document
+        .getElementById(`btn-backBokingWindow`)
+        .addEventListener("click", backModal)
+    }
+
+   
+}
+sendBooking()
