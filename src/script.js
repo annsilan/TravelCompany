@@ -155,10 +155,10 @@ function bookingTour(tour) {
             </div>
             <div class=" flex flex-col px-2  ">
                 <form class="flex flex-col text-s">
-                    <label for="name" class="text-xs">
+                    <label for="Name" class="text-xs">
                         Имя и фамилия<span class="text-red-500">*</span>
                     </label>
-                    <input id="name" type="text" name="name" class="rounded-md border" />
+                    <input id="Name" type="text" name="Name" class="rounded-md border" />
                     <label for="phone" class="text-xs pt-2" >
                         Телефон для связи<span class="text-red-500">*</span>
                     </label>
@@ -245,21 +245,7 @@ async function init() {
 }
 init()
 
-// Функция закрытия модального окна
-function closeModal() {
-    document.getElementById(`booking`).style.display = "none"
-}
 
-// Функция назад
-function backModal() {
-    document.getElementById(`errorWindow`).style.display = "none"
-    document.getElementById(`booking`).style.display = "flex"
-}
-
-// Функция закрытия успешного бронирования
-function windowOkClose() {
-    document.getElementById(`windowOk`).style.display = "none"
-}
 
 //кнопка добавления списка туров
 let tourInfo = document.getElementById("more")
@@ -391,6 +377,22 @@ function filterRating(tours, rating) {
     renderTours(filterTours)
 }
 
+// Функция закрытия модального окна
+function closeModal() {
+    document.getElementById(`booking`).style.display = "none"
+}
+
+// Функция назад
+function backModal() {
+    document.getElementById(`errorWindow`).style.display = "none"
+    document.getElementById(`booking`).style.display = "flex"
+}
+
+// Функция закрытия успешного бронирования
+function windowOkClose() {
+    document.getElementById(`windowOk`).style.display = "none"
+}
+
 function openWindowOk() {
     let windowOk = document.getElementById("windowOk")
     let bookingModal = document.getElementById("booking")
@@ -404,16 +406,16 @@ function errorW() {
     errorWind.style.display = "flex"
 }
 async function sendBooking() {
-  let name = document.getElementById("name").value
+  let Name = document.getElementById("Name").value
   let phone = document.getElementById("phone").value
   let email = document.getElementById("email").value
   let comment = document.getElementById("comment").value
-    if (name && phone && email) {
+    if (Name && phone && email) {
         
         document.getElementById("error").style.display = "none"
      
         const params = {
-            name: name,
+            Name: Name,
             phone: phone,
             email: email,
             comment: comment
