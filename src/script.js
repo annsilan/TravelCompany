@@ -406,12 +406,15 @@ function filterRating(tours, rating) {
     document.getElementById(`windowOk`).style.display = "none"
 }
 
+// функция окна успешного бонирования
 function openWindowOk() {
     let windowOk = document.getElementById("windowOk")
     let bookingModal = document.getElementById("booking")
     bookingModal.style.display = "none"
     windowOk.style.display = "flex"
 }
+
+// функция окна ошибки
  function errorW() {
     let errorWind =  document.getElementById("errorWindow")
     let bookingModal = document.getElementById("booking")
@@ -430,8 +433,6 @@ function openWindowOk() {
 
     if (Name.length && phone.length && email.length) {
      
-       
-     
         const params = {
             Name: Name,
             phone: phone,
@@ -448,16 +449,20 @@ function openWindowOk() {
     
 
         openWindowOk()
-        document
-            .getElementById(`btn-windowOkClose`)
-            .addEventListener("click", windowOkClose)
+    
+      
     } else {
         errorW() 
-        document
-        .getElementById(`btn-backBokingWindow`)
-        .addEventListener("click", backModal)
+        
     }
 
    
 }
 
+// document
+// .getElementById(`btn-windowOkClose`)
+// .addEventListener("click", windowOkClose)
+
+// document
+//         .getElementById(`btn-backBokingWindow`)
+//         .addEventListener("click", backModal)
