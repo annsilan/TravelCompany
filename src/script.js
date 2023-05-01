@@ -374,7 +374,7 @@ function filterRating(tours, rating) {
     const btnBack = document.getElementById("btn-backBokingWindow")
     btnBack.addEventListener("click", backModal)
 
-    // Кнопка успешного бронирования
+    // Кнопка закрытия успешного бронирования
     const btnOk = document.getElementById("btn-windowOkClose")
     btnOk.addEventListener("click", windowOkClose)
 
@@ -431,8 +431,8 @@ function openWindowOk() {
     let email = document.getElementById("email").value
     let comment = document.getElementById("comment").value
 
-    if (Name.length && phone.length && email.length) {
-     
+    if (Name.length && phone.length && email.length > 0) {
+        
         const params = {
             Name: Name,
             phone: phone,
@@ -446,11 +446,9 @@ function openWindowOk() {
         })
         let data = await response.json()
         console.log(data)
-    
 
         openWindowOk()
-    
-      
+
     } else {
         errorW() 
         
@@ -459,10 +457,3 @@ function openWindowOk() {
    
 }
 
-// document
-// .getElementById(`btn-windowOkClose`)
-// .addEventListener("click", windowOkClose)
-
-// document
-//         .getElementById(`btn-backBokingWindow`)
-//         .addEventListener("click", backModal)
