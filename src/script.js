@@ -430,7 +430,7 @@ function openWindowOk() {
 
     if (Name.length && phone.length && email.length) {
      
-        document.getElementById("errorWindow").style.display = "none"
+       
      
         const params = {
             Name: Name,
