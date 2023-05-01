@@ -428,7 +428,7 @@ function openWindowOk() {
     let email = document.getElementById("email").value
     let comment = document.getElementById("comment").value
 
-    if (Name && phone && email) {
+    if (Name.length && phone.length && email.length) {
      
         document.getElementById("errorWindow").style.display = "none"
      
