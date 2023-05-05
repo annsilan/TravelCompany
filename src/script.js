@@ -1,18 +1,15 @@
 import { format, max, min } from "date-fns"
 const { ru } = require("date-fns/locale")
 
-
-
-
- async function loadTour() {
+async function loadTour() {
     const response = await fetch(
         "https://www.bit-by-bit.ru/api/student-projects/tours"
     )
     const data = await response.json()
     return data
 }
-
- function renderTours(tours) {
+let currentTourId
+function renderTours(tours) {
     document.getElementById("moretour").innerHTML = ""
     tours.forEach((tour) => {
         let check
@@ -95,9 +92,7 @@ const { ru } = require("date-fns/locale")
     })
 }
 
-
-
- async function init() {
+async function init() {
     const tours = await loadTour()
     renderTours(tours)
     //  страны
@@ -131,20 +126,16 @@ const { ru } = require("date-fns/locale")
 }
 init()
 
-
-
 //кнопка добавления списка туров
 let tourInfo = document.getElementById("more")
 
 const btnmore = document.getElementById("add")
 btnmore.addEventListener("click", add)
 
- function add() {
+function add() {
     tourInfo.style.display = "flex"
     // renderTours(tour)
-    
 }
-
 
 //кнопка вверх
 const btnUp = {
@@ -265,11 +256,9 @@ function filterRating(tours, rating) {
     renderTours(filterTours)
 }
 
-
-
-
 // Бронирование тура
-  function bookingTour(tour) {
+function bookingTour(tour) {
+    currentTourId = tour.id
     document.getElementById(`booking`).style.display = "flex"
 
     let check
@@ -331,10 +320,10 @@ function filterRating(tours, rating) {
             </div>
             <div class=" flex flex-col px-2  ">
                 <form class="flex flex-col text-s">
-                    <label for="Name" class="text-xs">
+                    <label for="customerName" class="text-xs">
                         Имя и фамилия<span class="text-red-500">*</span>
                     </label>
-                    <input id="Name" type="text" name="Name" class="rounded-md border" />
+                    <input id="customerName" type="text" name="customerName" class="rounded-md border" />
                     <label for="phone" class="text-xs pt-2" >
                         Телефон для связи<span class="text-red-500">*</span>
                     </label>
@@ -353,17 +342,7 @@ function filterRating(tours, rating) {
                 </form>
             </div>
         </div>
-        <div id="errorWindow" class="hidden mx-auto bg-slate-200 my-60 box-content  rounded-md">
-           <p class="text-center p-10  text-orange-700 font-medium text-lg" >Для бронирования тура необходимо заполнить все обязательные поля.</p>
-           <div class="flex justify-center">
-           <button id="btn-backBokingWindow" class="flex justify-center ml-15 my-7 font-medium text-slate-600 border border-solid py-3 px-4 rounded-md bg-slate-100 hover:text-amber-600 "  >Назад</button>
-           </div>
-        </div>
-        <div id="windowOk" class="hidden mx-auto bg-slate-200 my-60 box-content  rounded-md">
-            <p class="text-center p-10  text-orange-700 font-medium text-lg" >Ваша заявка успешно отправлена.</p>
-            <div class="flex justify-center">
-            <button id="btn-windowOkClose" class="flex justify-center ml-15 my-7 font-medium text-slate-600 border border-solid py-3 px-4 rounded-md bg-slate-100 hover:text-amber-600 ">Закрыть</button>
-        </div>
+        
      </div>
     `
     // Кнопка закрытия бронирования
@@ -378,68 +357,61 @@ function filterRating(tours, rating) {
     const btnOk = document.getElementById("btn-windowOkClose")
     btnOk.addEventListener("click", windowOkClose)
 
-    // let btnsend = document.getElementById(`btn-send`)
-    // btnsend.addEventListener("click", sendBooking)
-    // console.log(btnsend)
-
-    document.getElementById("btn-send").addEventListener("click", (event) => sendBooking(event))
-   console.log(sendBooking)
-
-   
+    document
+        .getElementById(`btn-send`)
+        .addEventListener("click", (event) => sendBooking(event))
+    console.log(sendBooking)
 }
 
+let windowOk = document.getElementById("windowOk")
+let bookingModal = document.getElementById("booking")
 
+let eWind = document.getElementById("eWindow")
 
 // Функция закрытия модального окна
- function closeModal() {
+function closeModal() {
     document.getElementById(`booking`).style.display = "none"
 }
 
 // Функция назад
- function backModal() {
-    document.getElementById(`errorWindow`).style.display = "none"
+function backModal() {
+    document.getElementById(`eWindow`).style.display = "none"
     document.getElementById(`booking`).style.display = "flex"
 }
 
 // Функция закрытия успешного бронирования
- function windowOkClose() {
+function windowOkClose() {
     document.getElementById(`windowOk`).style.display = "none"
 }
 
 // функция окна успешного бонирования
 function openWindowOk() {
-    let windowOk = document.getElementById("windowOk")
-    let bookingModal = document.getElementById("booking")
     bookingModal.style.display = "none"
     windowOk.style.display = "flex"
 }
 
 // функция окна ошибки
- function errorW() {
-    let errorWind =  document.getElementById("errorWindow")
-    let bookingModal = document.getElementById("booking")
+function erWind() {
     bookingModal.style.display = "none"
-    errorWind.style.display = "flex"
+    eWind.style.display = "flex"
 }
 
-
- async function sendBooking(event) {
+async function sendBooking(event) {
     event.preventDefault()
 
-    let Name = document.getElementById("Name").value
+    let customerName = document.getElementById("customerName").value
     let phone = document.getElementById("phone").value
     let email = document.getElementById("email").value
     let comment = document.getElementById("comment").value
 
-    if (Name.length && phone.length && email.length > 0) {
-        
+    if (customerName.length && phone.length && email.length > 0) {
         const params = {
-            Name: Name,
+            customerName: customerName,
             phone: phone,
             email: email,
             comment: comment
         }
-        let url = `https://www.bit-by-bit.ru/api/student-projects/tours/${id}`
+        let url = `https://www.bit-by-bit.ru/api/student-projects/tours/${currentTourId}`
         let response = await fetch(url, {
             method: "POST",
             body: JSON.stringify(params)
@@ -448,12 +420,7 @@ function openWindowOk() {
         console.log(data)
 
         openWindowOk()
-
     } else {
-        errorW() 
-        
+        erWind()
     }
-
-   
 }
-
